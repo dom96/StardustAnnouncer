@@ -10,4 +10,4 @@ bin           = @["StardustAnnouncer"]
 
 # Dependencies
 
-requires "nim >= 1.0.6"
+requires "nim >= 1.0.6", "dimscord >= 1.2.5"
