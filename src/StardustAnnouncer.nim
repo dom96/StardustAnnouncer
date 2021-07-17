@@ -11,9 +11,9 @@ type
 
 const announcementChannelId = "866004523591663657"
 const emotes = [
-  ":2716057:", ":VapeNaysh:", ":USA:", ":SpoopyBones:", ":SixTwoSix:",
-  ":PrideStar:", ":PogMaThoin:", ":Patrick:", ":OhMyGlob:", ":Ninja:",
-  ":BroFist:", ":BaconPancakes:"
+  "<:2716057:813851104269697034>", "<:VapeNaysh:813851430728892437>", "<:USA:813851430921568266>", "<:SpoopyBones:813851431391068160>", "<:SixTwoSix:813851430737805393>",
+  "<:Pridestar:813851431047528468>", "<:PogMaThoin:813851431014367282>", "<:Patrick:813851430930350091>", "<:OhMyGlob:813851430870974576>", "<:Ninja:813851431034421258>",
+  "<:BroFist:813851431064698951>", "<:BaconPancakes:813851104466567248>"
 ]
 let botToken = readFile("stardust-announcer.bot-token")
 
