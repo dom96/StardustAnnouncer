@@ -33,7 +33,7 @@ proc messageCreate(s: Shard, m: Message) {.event(discord).} =
 proc sendAnnouncement(
   state: State, servers: seq[string]
 ) {.async.} =
-  if epochTime() - state.lastAnnouncement < 1800:
+  if epochTime() - state.lastAnnouncement > 1800:
     # Reset last announced servers after 30 minutes of no announcements.
     state.lastActive = @[]
   if servers.len == 0:
