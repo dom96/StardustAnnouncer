@@ -9,7 +9,7 @@ type
     lastActive: seq[string]
     lastAnnouncement: float
 
-const announcementChannelId = "456504845642235914"
+const announcementChannelId = "866004523591663657"
 const emotes = [
   ":2716057:", ":VapeNaysh:", ":USA:", ":SpoopyBones:", ":SixTwoSix:",
   ":PrideStar:", ":PogMaThoin:", ":Patrick:", ":OhMyGlob:", ":Ninja:",
@@ -53,6 +53,7 @@ proc sendAnnouncement(
       "Why not join them for a game?\n\n" &
       fmt"Join via this link: <{uri}> {emote}"
     discard await discord.api.sendMessage(announcementChannelId, msg)
+    info("Sent message about ", server)
 
   state.lastAnnouncement = epochTime()
   state.lastActive = servers
@@ -63,7 +64,6 @@ proc runMetricsLoop() {.async.} =
     await sleepAsync(5000)
     try:
       let metrics = await getMetrics()
-      debug("Got metrics: ", metrics)
       await sendAnnouncement(state, getActiveServers(metrics))
     except:
       error("Unable to download metrics: ", getCurrentExceptionMsg())
