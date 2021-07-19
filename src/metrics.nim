@@ -19,6 +19,7 @@ proc parseMetrics(metrics: string): Metrics =
 
 proc getMetrics*(): Future[Metrics] {.async.} =
   var client = newAsyncHttpClient()
+  defer: client.close()
   let metrics = await client.getContent("https://stardust.dev/route/metrics")
   return parseMetrics(metrics)
 

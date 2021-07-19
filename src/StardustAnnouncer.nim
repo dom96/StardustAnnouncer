@@ -21,14 +21,14 @@ let discord = newDiscordClient(botToken)
 
 # Handle event for on_ready.
 proc onReady(s: Shard, r: Ready) {.event(discord).} =
-  echo "Ready as " & $r.user
+  info "Ready as " & $r.user
 
 # Handle event for message_create.
 proc messageCreate(s: Shard, m: Message) {.event(discord).} =
   if m.author.bot: return
   if m.content == "!ping": # If message content is "!ping".
     discard await discord.api.sendMessage(m.channel_id, "Pong!")
-    echo("Got pong from <#", m.channel_id, ">")
+    info("Got pong from <#", m.channel_id, ">")
 
 proc sendAnnouncement(
   state: State, servers: seq[string]
@@ -69,7 +69,7 @@ proc runMetricsLoop() {.async.} =
       error("Unable to download metrics: ", getCurrentExceptionMsg())
 
 randomize()
-var consoleLog = newConsoleLogger()
+var consoleLog = newConsoleLogger(fmtStr="[StardustAnnouncer] [$time] - $levelname: ")
 addHandler(consoleLog)
 # Set up metrics polling.
 let runMetricsLoopFut = runMetricsLoop()
